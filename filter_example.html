@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="myFIlterApp">
+	<head>
+		<script src="libs/angular.min.js"></script>
+		<script src="src/filter.js"></script>
+	</head>
+	<body ng-controller="myFilterController">
+		<table border="1">
+			<tr>
+				<td>Enter First Name</td>
+				<td><input type="text" ng-model="student.firstName"></td>
+			</tr>
+			<tr>
+				<td>Enter Last Name</td>
+				<td><input type="text" ng-model="student.lastName"></td>
+			</tr>
+			<tr>
+				<td>Enter Fees</td>
+				<td><input type="text" ng-model="student.fees"></td>
+			</tr>
+			<tr>
+				<td>Full Name</td>
+				<td>{{student.getFullName()}}</td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<table>
+			<tr>
+				<td>Name is Lower case:</td>
+				<td>{{ student.firstName | lowercase}}</td>
+			</tr>
+			<tr>
+				<td>Name in Upper case:</td>
+				<td>{{ student.firstName | uppercase}}</td>
+			</tr>
+			<tr>
+				<td>Currency is:</td>
+				<td>{{ student.fees | currency}}</td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<table>
+			<tr>
+				<td>Search Subject here:</td>
+				<td><input type="text" ng-model="searchKey"></td>
+			</tr>
+			<tr>
+				<td>Result</td>
+				<td>
+					<ul>
+						<li ng-repeat="sub in student.subjects | filter:searchKey | orderBy:'mark'">
+							Subject Name:{{ sub.name }} , Subject Mark: {{ sub.mark}}
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myAppFilterSort">
+	<head>
+		<script src="libs/angular.min.js"></script>
+		<script src="src/filter_sort.js"></script>
+		<link href="css/tables.css" rel="stylesheet">
+	</head>
+	<body ng-controller="myAppControllerSort">
+		<div>
+			Filter By Number Of Item:
+			<input type="number" step="1" min="0" max="5" ng-model="sortModel">
+			<br>
+			Filter By Asc or Dsc    :
+			<select ng-model="sortByAscDsc">
+				<option value="+name">Name Asc</option>
+				<option value="-name">Name Dsc</option>
+				<option value="+salary">Salary Asc</option>
+				<option value="-salary">Salary Dsc</option>
+			</select>
+		</div>
+	
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>DOB</th>
+						<th>Gender</th>
+						<th>Salary (Number)</th>
+						<th>Salary (Currency)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="employee in employees | limitTo:sortModel | orderBy:sortByAscDsc">
+						<td>{{employee.name}}</td>
+						<td>{{employee.dob | date:"dd-MM-yyyy"}}</td>
+						<td>{{employee.gender}}</td>
+						<td>{{employee.salary | number:2}}</td>
+						<td>{{employee.salary | currency:"Rs "}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
