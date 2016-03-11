@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="headerApp">
+	<head>
+		<script src=libs/angular.min.js></script>
+		<script src="src/header_sort.js"></script>
+		<link href="css/tables.css" rel="stylesheet">
+	</head>
+<body>
+	<div ng-controller="headerController">
+		<table>
+			<thead>
+				<th>Name</th>
+				<th>DOB</th>
+				<th>Gender</th>
+				<th>Salary</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="emp in employees">
+					<td>{{emp.name}}</td>
+					<td>{{emp.dob}}</td>
+					<td>{{emp.gender}}</td>
+					<td>{{emp.salary}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

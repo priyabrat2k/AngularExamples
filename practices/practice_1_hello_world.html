@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="appName">
+	<head>
+		<script type="text/javascript" src="lib/angular.min.js"></script>
+		<script>
+			var app = angular.module('appName', []);
+			app.controller('controllerName', function($scope) {
+			    $scope.name = "My name is Priyabrat";
+			});
+		</script>
+	</head>
+	<body>
+		 <div ng-controller="controllerName">
+    		<p ng-bind="name"></p>
+		</div>
+	</body>
+</html>
